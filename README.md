@@ -23,11 +23,11 @@ on top of **N** ode.
 
 `meanAuth` takes 3 parameters:
 
- | Parameter | Required | Description |
- | --------- | -------- | ----------- |
- | `User` | Yes | The mongoose model used for users. See [The Database Model](#the-database-model) below. |
- | `passport` | No | The app's current instance of Passport.JS. This must only be supplied if you have custom passport strategies already configured. If this is not supplied, meanAuth will initialize its own isntance of passport. |
- | `options` | No | Various configuration options to control `meanAuth`'s behavior. See [Options](#options) below |
+| Parameter | Required | Description |
+| --------- | -------- | ----------- |
+| `User` | Yes | The mongoose model used for users. See [The Database Model](#the-database-model) below. |
+| `passport` | No | The app's current instance of Passport.JS. This must only be supplied if you have custom passport strategies already configured. If this is not supplied, meanAuth will initialize its own isntance of passport. |
+| `options` | No | Various configuration options to control `meanAuth`'s behavior. See [Options](#options) below |
 
 ## Options
 
@@ -75,11 +75,11 @@ handled.
 
 These objects can have any of these fields:
 
- | Field | Type | Description | Default |
- | ----- | ---- | ----------- | ------- |
- | `required` | `Boolean` | Whether or not this field is required | `true` |
- | `param` | `String` | The name of the HTTP POST parameter that this path should get its value from during `/signup` | Same as schema path. |
- | `beforeSave` | `Function` | Whatever this function returns, if provided, is saved to the database during `/signup`. It is passed only the data from the HTTP POST parameter. | `function(value){return value;}` |
+| Field | Type | Description | Default |
+| ----- | ---- | ----------- | ------- |
+| `required` | `Boolean` | Whether or not this field is required | `true` |
+| `param` | `String` | The name of the HTTP POST parameter that this path should get its value from during `/signup` | Same as schema path. |
+| `beforeSave` | `Function` | Whatever this function returns, if provided, is saved to the database during `/signup`. It is passed only the data from the HTTP POST parameter. | `function(value){return value;}` |
 
 
 For example:
@@ -111,12 +111,12 @@ For example:
 
 The `Router` returned by `meanAuth` exposes a few API endpoints that can be used to handle users within the app:
 
- | Endpoint | Method | Description | Input Parameters |
- | -------- | ------ | ----------- | ---------------- |
- | `/signup` | POST | Create a new user | `email` and `password` are required but additional fields can be defined. See [Custom Fields](#custom-fields) above. |
- | `/login` | POST | Authenticate an existing user by email+password | `email` and `password` only |
- | `/logout` | POST | Invalidates the user's login token | `token` |
- | `/check` | POST | Authenticate an existing user by token | `token` |
+| Endpoint | Method | Description | Input Parameters |
+| -------- | ------ | ----------- | ---------------- |
+| `/signup` | POST | Create a new user | `email` and `password` are required but additional fields can be defined. See [Custom Fields](#custom-fields) above. |
+| `/login` | POST | Authenticate an existing user by email+password | `email` and `password` only |
+| `/logout` | POST | Invalidates the user's login token | `token` |
+| `/check` | POST | Authenticate an existing user by token | `token` |
 
 `/signup`, `/login`, and `/check`, if successful, respond with a JSON object such as the following:
 
