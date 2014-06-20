@@ -122,8 +122,8 @@ The `Router` returned by `meanAuth` exposes a few API endpoints that can be used
 
     {
       status: 'ok',
-      token: \[Valid token\],
-      user: \[User from database\]
+      token: [Valid token],
+      user: [User from database]
     }
 
 `/logout` responds simply with:
