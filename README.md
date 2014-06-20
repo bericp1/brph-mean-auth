@@ -14,7 +14,7 @@ on top of **N** ode.
       router: ...       //See "API Endpoints" below,
       authenticate: ... //See "The Authenticate Middleware" below
     }
-    
+
 For example:
 
     var express = require('express'),
@@ -139,6 +139,8 @@ The `Router` returned by `auth.router` exposes a few API endpoints that can be u
 | `/logout` | POST | Invalidates the user's login token | `token` |
 | `/check` | POST | Authenticate an existing user by token | `token` |
 
+### Responses
+
 `/signup`, `/login`, and `/check`, if successful, respond with a JSON object such as the following:
 
     {
@@ -152,3 +154,33 @@ The `Router` returned by `auth.router` exposes a few API endpoints that can be u
     {status:'ok'}
 
 The user object pulled from the database has its `local.password` field set to `false` for security purposes.
+
+### Errors
+
+If any of these encounter a handle-able, auth-related error, they will return the following object at a minimum:
+
+    {error:'Error Message'}
+
+In addition, if there are any fields relevant to the error, their `param` names (see "[Custom Fields](#custom-fields)"
+above) will be passed back alongside the error message in the `fields` array. For example, if the `/login` endpoint is
+hit with a mismatched/incorrect email+password pair, it will return the following:
+
+    {
+      error: 'A user does not exist with that email/password.',
+      fields: ['email', 'password']
+    }
+
+Or, considering the [custom fields](#custom-fields) example above, the `/signup` endpoint will respond with the
+following if the user did not supply their weight (which was a custom field marked as required):
+
+    {
+      error: 'Missing one or more required fields.',
+      fields: ['weight']
+    }
+
+## TODO
+
+ - [ ] Move `errors` object into config so that error messages can be extended by developer
+ - [ ] `/destory` endpoint
+ - [ ] Flexible, configurable model paths so that the developer doesn't have to stick to a specific db model structure
+ - [ ] More callbacks/event-handlers for further expandability
