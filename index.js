@@ -4,13 +4,17 @@ module.exports = function (User, passport, config) {
   if(typeof config !== 'object'){
     if(typeof passport !== 'object'){
       config = {};
-      passport = require('passport');
+      passport = {};
     }else if(typeof passport.Passport !== 'object'){
       config = passport;
-      passport = require('passport');
+      passport = {};
     }else{
       config = {};
     }
+  }
+
+  if(typeof passport.Passport !== 'object') {
+    passport = require('passport');
   }
 
   var extend = require('extend'),
