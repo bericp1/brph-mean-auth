@@ -159,13 +159,14 @@ The user object pulled from the database has its `local.password` field set to `
 
 If any of these encounter a handle-able, auth-related error, they will return the following object at a minimum:
 
-    {error:'Error Message'}
+    {status:'error', error:'Error Message'}
 
 In addition, if there are any fields relevant to the error, their `param` names (see "[Custom Fields](#custom-fields)"
 above) will be passed back alongside the error message in the `fields` array. For example, if the `/login` endpoint is
 hit with a mismatched/incorrect email+password pair, it will return the following:
 
     {
+      status: 'error',
       error: 'A user does not exist with that email/password.',
       fields: ['email', 'password']
     }
@@ -174,6 +175,7 @@ Or, considering the [custom fields](#custom-fields) example above, the `/signup`
 following if the user did not supply their weight (which was a custom field marked as required):
 
     {
+      status: 'error',
       error: 'Missing one or more required fields.',
       fields: ['weight']
     }

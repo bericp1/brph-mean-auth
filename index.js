@@ -60,10 +60,14 @@ module.exports = function (User, passport, config) {
     }
   }
 
+  var p = require('./lib/passport')(User, passport, config),
+    a = require('./lib/authenticate')(passport),
+    r = require('./lib/route')(User, config, a);
+
   return {
-    passport: require('./lib/passport')(User, passport, config),
-    router: require('./lib/route')(User, config),
-    authenticate: require('./lib/authenticate')()
+    passport: p,
+    router: r,
+    authenticate: a()
   };
 
 };
