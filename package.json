@@ -18,9 +18,9 @@
   "homepage": "https://github.com/bericp1/brph-mean-auth-server",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "crypto": "0.0.3",
+    "extend": "^1.2.1",
     "passport": "^0.2.0",
-    "passport-facebook": "^1.0.3",
-    "passport-google-oauth": "^0.1.5",
     "passport-local": "^1.0.0",
     "passport-localapikey": "0.0.3"
   }
