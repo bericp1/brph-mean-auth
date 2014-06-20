@@ -7,7 +7,15 @@ on top of **N** ode.
 
 ## Usage
 
-`meanAuth` always returns an Express 4.x `Router` that can be used like middleware through `app.use`.
+`meanAuth` always returns the following object:
+
+    {
+      passport: ...     //The configured passport instance; exposed for further configuration
+      router: ...       //See "API Endpoints" below,
+      authenticate: ... //See "The Authenticate Middleware" below
+    }
+    
+For example:
 
     var express = require('express'),
       mongoose = require('mongoose'),
@@ -15,9 +23,16 @@ on top of **N** ode.
     
     var app = express();
     
-    // Setup mongoose models, express routes, etc.
+    // Setup mongoose models, express routes, etc. here
     
-    app.use('/auth', meanAuth(mongoose.model('User')));
+    //Instantiate meanAuth with the already configured User model
+    var auth = meanAuth(mongoose.model('User'));
+    
+    //Mount the auth router on /auth
+    app.use('/auth', auth.router);
+    
+    //In order to make any requests to /members/*, a user must be authenticated
+    app.use('/members', auth.authenticate, function(req, res, next){ ... });
 
 ## Parameters
 
@@ -44,6 +59,12 @@ their defaults:
 
 The options object is broken down into a `local` set of options to allow for future support of other non-local auth
 strategies.
+
+## The Authenticate Middleware
+
+In order to protect your own custom API endpoints, `auth.authenticate` is exposed. It's standard express middleware that
+will only allow requests accomodated with a valid login token proceed down the middleware chain. [See the usage example
+above](#usage).
 
 ## The Database Model
 
@@ -109,7 +130,7 @@ For example:
 
 ## API Endpoints
 
-The `Router` returned by `meanAuth` exposes a few API endpoints that can be used to handle users within the app:
+The `Router` returned by `auth.router` exposes a few API endpoints that can be used to handle users within the app:
 
 | Endpoint | Method | Description | Input Parameters |
 | -------- | ------ | ----------- | ---------------- |
