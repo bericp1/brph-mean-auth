@@ -1,7 +1,7 @@
 {
-  "name": "brph-mean-auth-server",
-  "version": "0.2.2",
-  "description": "An auth solution for the MEAN stack (backend component)",
+  "name": "brph-mean-auth",
+  "version": "0.3.0",
+  "description": "An auth solution for the MEAN stack.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,12 +10,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bericp1/brph-mean-auth-server.git"
+    "url": "https://github.com/bericp1/brph-mean-auth.git"
   },
   "bugs": {
-    "url": "https://github.com/bericp1/brph-mean-auth-server/issues"
+    "url": "https://github.com/bericp1/brph-mean-auth/issues"
   },
-  "homepage": "https://github.com/bericp1/brph-mean-auth-server",
+  "homepage": "https://github.com/bericp1/brph-mean-auth",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "crypto": "0.0.3",
