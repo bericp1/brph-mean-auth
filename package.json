@@ -1,6 +1,6 @@
 {
   "name": "brph-mean-auth",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "An auth solution for the MEAN stack.",
   "main": "index.js",
   "scripts": {

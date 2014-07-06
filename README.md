@@ -1,4 +1,4 @@
-# brph-mean-auth `v0.3.0-alpha`
+# brph-mean-auth `v0.3.1`
 ### An auth solution for the MEAN stack.
 
 This module is an attempt at managing authentication and authorization of users in single-page apps using **M** ongoDB *(specifically, mongoose)*, **E** 
@@ -287,5 +287,7 @@ Queue `func` to be ran as soon as a user is logged in. If a user is currently lo
  
 ## Changelog
 
- - `0.3.0-alpha`
+ - `0.3.0`
     - Combined client and server side components into one npm module.
+ - `0.3.1`
+    - Tested. Working.
